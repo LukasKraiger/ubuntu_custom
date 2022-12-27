@@ -16,3 +16,11 @@ RUN wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc |
     && apt-get clean all \
 		&& apt-get purge \
 		&& rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+RUN apt-get update \
+&& apt-get upgrade -y \
+&& echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | debconf-set-selections \
+&& apt-get install -y ttf-mscorefonts-installer \
+&& apt-get clean all && \
+apt-get purge && \
+rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
