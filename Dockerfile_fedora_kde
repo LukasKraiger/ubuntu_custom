@@ -11,3 +11,5 @@ RUN dnf install -y openblas \
 
 RUN wget https://download.onlyoffice.com/install/desktop/editors/linux/onlyoffice-desktopeditors.x86_64.rpm \
     && dnf install -y onlyoffice-desktopeditors.x86_64.rpm
+
+RUN Rscript -e "install.packages(c('tidyverse', 'sjlabelled', 'haven', 'magrittr', 'dplyr', 'psych', 'knitr', 'ggthemes'), repos='https://cran.wu.ac.at/');"
