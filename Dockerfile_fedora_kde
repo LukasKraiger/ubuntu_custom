@@ -1,6 +1,6 @@
 FROM lscr.io/linuxserver/webtop:fedora-kde
 
-RUN dnf update \
+RUN dnf update -y \
     && dnf -y upgrade \
     && dnf -y install git wget \
     && dnf -y install R \
