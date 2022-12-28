@@ -1,6 +1,6 @@
 FROM lscr.io/linuxserver/webtop:ubuntu-kde
 
-
+ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update \
     && apt-get upgrade -y \
     && apt-get install -y pspp \
@@ -16,6 +16,10 @@ RUN wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc |
     && apt-get clean all \
 		&& apt-get purge \
 		&& rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+RUN wget https://download.onlyoffice.com/install/desktop/editors/linux/onlyoffice-desktopeditors_amd64.deb \
+	&& apt-get update \
+	&& apt-get install -y ./onlyoffice-desktopeditors_amd64.deb
 
 RUN apt-get update \
 		&& apt-get upgrade -y \
