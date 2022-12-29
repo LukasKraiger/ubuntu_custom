@@ -5,10 +5,10 @@ RUN dnf update -y \
     && dnf -y install R \
     && dnf -y install pspp
 
-#RUN dnf update -y \
-#    && dnf install -y openblas rstudio-desktop
+RUN dnf update -y \
+    && dnf install -y openblas rstudio-desktop
 
-#RUN wget https://download.onlyoffice.com/install/desktop/editors/linux/onlyoffice-desktopeditors.x86_64.rpm \
-#    && dnf install -y onlyoffice-desktopeditors.x86_64.rpm
+RUN wget https://download.onlyoffice.com/install/desktop/editors/linux/onlyoffice-desktopeditors.x86_64.rpm \
+    && dnf install -y onlyoffice-desktopeditors.x86_64.rpm
 
 RUN Rscript -e "install.packages(c('tidyverse', 'sjlabelled', 'haven', 'magrittr', 'dplyr', 'psych', 'knitr', 'ggthemes'), repos='https://cran.wu.ac.at/');"
