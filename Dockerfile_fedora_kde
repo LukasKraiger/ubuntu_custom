@@ -1,13 +1,12 @@
 FROM lscr.io/linuxserver/webtop:fedora-xfce
 
 RUN dnf update -y \
-    && dnf -y upgrade \
     && dnf -y install git wget \
     && dnf -y install R \
     && dnf -y install pspp
 
-RUN dnf install -y openblas \
-    && dnf install -y rstudio-desktop
+RUN dnf update -y \
+    && dnf install -y openblas rstudio-desktop
 
 RUN wget https://download.onlyoffice.com/install/desktop/editors/linux/onlyoffice-desktopeditors.x86_64.rpm \
     && dnf install -y onlyoffice-desktopeditors.x86_64.rpm
