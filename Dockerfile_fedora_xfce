@@ -6,8 +6,9 @@ RUN dnf update -y \
     && dnf -y install pspp
 
 RUN dnf update -y \
-    && dnf -y install harfbuzz-devel fribidi-devel openssl-devel
-
+    && dnf -y install harfbuzz-devel fribidi-devel openssl-devel libcurl-devel \
+    && dnf -y install freetype-devel libpng-devel libtiff-devel libjpeg-turbo-devel 
+    
 RUN dnf update -y \
     && dnf install -y openblas rstudio-desktop
 
