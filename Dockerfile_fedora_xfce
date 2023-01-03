@@ -11,4 +11,15 @@ RUN dnf update -y \
 RUN wget https://download.onlyoffice.com/install/desktop/editors/linux/onlyoffice-desktopeditors.x86_64.rpm \
     && dnf install -y onlyoffice-desktopeditors.x86_64.rpm
 
-RUN Rscript -e "install.packages(c('tidyverse', 'sjlabelled', 'haven', 'magrittr', 'dplyr', 'psych', 'knitr', 'ggthemes'), repos='https://cran.wu.ac.at/');"
+
+RUN R -e "install.packages('devtools', dependencies=TRUE, repos='https://cran.wu.ac.at/');   if (!library(devtools, logical.return=T)) quit(status=10)"
+RUN R -e "install.packages('tidyverse', dependencies=TRUE, repos='https://cran.wu.ac.at/');   if (!library(tidyverse, logical.return=T)) quit(status=10)"
+RUN R -e "install.packages('sjlabelled', dependencies=TRUE, repos='https://cran.wu.ac.at/');   if (!library(sjlabelled, logical.return=T)) quit(status=10)"
+RUN R -e "install.packages('haven', dependencies=TRUE, repos='https://cran.wu.ac.at/');   if (!library(haven, logical.return=T)) quit(status=10)"
+RUN R -e "install.packages('magrittr', dependencies=TRUE, repos='https://cran.wu.ac.at/');   if (!library(magrittr, logical.return=T)) quit(status=10)"
+RUN R -e "install.packages('dplyr', dependencies=TRUE, repos='https://cran.wu.ac.at/');   if (!library(dplyr, logical.return=T)) quit(status=10)"
+RUN R -e "install.packages('psych', dependencies=TRUE, repos='https://cran.wu.ac.at/');   if (!library(psych, logical.return=T)) quit(status=10)"
+RUN R -e "install.packages('knitr', dependencies=TRUE, repos='https://cran.wu.ac.at/');   if (!library(knitr, logical.return=T)) quit(status=10)"
+RUN R -e "install.packages('ggthemes', dependencies=TRUE, repos='https://cran.wu.ac.at/');   if (!library(ggthemes, logical.return=T)) quit(status=10)"
+RUN R -e "devtools::install_github('LukasKraiger/frame')"
+#https://stackoverflow.com/questions/45289764/install-r-packages-using-docker-file
