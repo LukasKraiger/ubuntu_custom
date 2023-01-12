@@ -30,6 +30,16 @@ RUN apt-get update \
 		&& rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN apt-get update \
+		&& apt-get upgrade -y \
+		&& add-apt-repository ppa:jaap.karssenberg/zim \
+		&& apt-get update \
+		&& wget https://zim-wiki.org/downloads/zim_0.75.1_all.deb \
+		&& apt-get install -y ./zim_0.75.1_all.deb \
+		&& apt-get clean all \
+		&& apt-get purge \
+		&& rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+RUN apt-get update \
 && apt-get upgrade -y \
 && apt-get install -y libgit2-dev build-essential libcurl4-gnutls-dev libxml2-dev  \
 && apt-get install -y libssl-dev cmake libfontconfig1-dev freetype2-doc libharfbuzz-dev libfribidi-dev libfreetype6-dev libpng-dev libtiff5-dev libjpeg-dev \
