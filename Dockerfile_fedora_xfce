@@ -15,6 +15,7 @@ RUN dnf update -y \
 RUN wget https://download.onlyoffice.com/install/desktop/editors/linux/onlyoffice-desktopeditors.x86_64.rpm \
     && dnf install -y onlyoffice-desktopeditors.x86_64.rpm
 
+RUN echo "options(Ncpus = 2)" >> .Rprofile
 
 RUN R -e "if (!library(devtools, logical.return=T)) install.packages('devtools', dependencies=TRUE, repos='https://cran.wu.ac.at/')"
 RUN R -e "if (!library(tidyverse, logical.return=T)) install.packages('tidyverse', dependencies=TRUE, repos='https://cran.wu.ac.at/')"
@@ -48,3 +49,5 @@ RUN R -e "if (!library(ggpubr, logical.return=T)) quit(status=10)"
 
 RUN R -e "devtools::install_github('LukasKraiger/frame')"
 #https://stackoverflow.com/questions/45289764/install-r-packages-using-docker-file
+
+RUN rm -rf .Rprofile
