@@ -3,7 +3,7 @@ FROM lscr.io/linuxserver/webtop:ubuntu-xfce
 ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update \
     && apt-get upgrade -y \
-    && apt-get install -y pspp \
+    && apt-get install -y pspp octave \
     && apt-get install -y git \
     && apt-get install -y wget
 
